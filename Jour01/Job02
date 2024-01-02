@@ -1,0 +1,14 @@
+from Job01 import   Opération_instence
+print("Le nombre1 est", Opération_instence.nombre01)
+print("Le  nombre2 est ", Opération_instence.nombre02)
+####################################""
+class Opération:
+    def __init__(self , nombre01 = 4 , nombre02 = 17): 
+        self.nombre01 = nombre01
+        self.nombre02 = nombre02
+#Instancier la première classe
+Opération_instence = Opération()
+#impression d'objet en console
+print(Opération_instence)
+print("Le nombre1 est", Opération_instence.nombre01)
+print("Le  nombre2 est ", Opération_instence.nombre02)

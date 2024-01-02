@@ -1,0 +1,15 @@
+class Animal:
+    def __init__ (self , age=0 , prenom = ""):
+        self.age = age 
+        self.prenom = prenom
+    def vieillir(self):
+        self.age += 1
+    def nommer (self , Nom):
+        self.prenom = Nom
+animal = Animal()
+print("Age de l'animal:", animal.age)
+animal.vieillir()
+print("Age après vieillissement:", animal.age)
+animal.nommer("clara")
+print("l'animal se nomme : " ,animal.prenom )
+
