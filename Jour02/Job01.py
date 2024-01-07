@@ -1,19 +1,32 @@
 class Rectangle:
-    def __init__ (self , longueur , largeur):
+    def __init__(self, longueur, largeur):
         self.__longueur = longueur
         self.__largeur = largeur
-    def assesseurs_longueur(self):
+
+    # Getter (assesseur) pour la longueur
+    def get_longueur(self):
         return self.__longueur
-    def assesseurs_largueur(self):
+
+    # Getter (assesseur) pour la largeur
+    def get_largeur(self):
         return self.__largeur
-    def mutateurs_longueur(self , nouvelle_longueur):
+
+    # Setter (mutateur) pour la longueur
+    def set_longueur(self, nouvelle_longueur):
         self.__longueur = nouvelle_longueur
-    def mutateurs_largueur(self , nouvelle_longueur):
-        self.__largeur = nouvelle_longueur
-rectangle_1 = Rectangle(longueur = 15 , largeur = 6)
-print("longueur : " , rectangle_1.assesseurs_longueur())
-print("largeur : " , rectangle_1.assesseurs_largueur())
-rectangle_1.mutateurs_largueur(18)
-rectangle_1.mutateurs_longueur(8)
-print("Nouvelle longueur : " , rectangle_1.assesseurs_longueur())
-print("Nouvelle largeur : " , rectangle_1.assesseurs_largueur())
+
+    # Setter (mutateur) pour la largeur
+    def set_largeur(self, nouvelle_largeur):
+        self.__largeur = nouvelle_largeur
+
+# Utilisation des getter et setter
+rectangle_1 = Rectangle(longueur=15, largeur=6)
+
+print("longueur :", rectangle_1.get_longueur())
+print("largeur :", rectangle_1.get_largeur())
+
+rectangle_1.set_largeur(18)
+rectangle_1.set_longueur(8)
+
+print("Nouvelle longueur :", rectangle_1.get_longueur())
+print("Nouvelle largeur :", rectangle_1.get_largeur())
