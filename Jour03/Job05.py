@@ -1,49 +1,52 @@
-class Personne:
+
+import random
+
+class Personnage:
     def __init__(self, nom, vie):
-        self._nom = nom  
-        self._vie = vie
+        self.nom = nom
+        self.vie = vie
 
     def attaquer(self, adversaire):
-        points = 10
-        adversaire.recevoir_points(points)
+        degats = random.randint(1, 10)
+        print(f"{self.nom} attaque {adversaire.nom} et lui inflige {degats}.")
+        adversaire.subir_degats(degats)
 
-    def recevoir_points(self, points):
-        self._vie -= points
-        print(self._nom, "a subi", points, ". Vie restante :", self._vie)
+    def subir_degats(self, degats):
+        self.vie -= degats
+        print(f"{self.nom} a subi {degats}. Vie restante : {self.vie}")
 
 class Jeu:
     def __init__(self):
         self.niveau = 1
 
-    def choisirNiveau(self):
-        self.niveau = int(input("Choisissez le niveau de 1 à 3 :"))
+    def choisir_niveau(self):
+        self.niveau = int(input("Choisissez le niveau de difficulté (1, 2, 3) : "))
 
-    def lancerJeu(self):
-        Joueur = Personne("Kamelia", 100 * self.niveau)
-        Adversaire = Personne("Maysa", 50 * self.niveau)
+    def lancer_jeu(self):
+        self.choisir_niveau()
 
-        print("Un combat commence entre :", Joueur._nom, "et", Adversaire._nom)
+        joueur = Personnage("Kamelia", 50)
+        ennemi = Personnage("Maysa", 50)
 
-        while Joueur._vie > 0 and Adversaire._vie > 0:
+        print(f"\nUn combat commence entre : {joueur.nom} et {ennemi.nom}\n")
+
+        while joueur.vie > 0 and ennemi.vie > 0:
             print("Tour du joueur:")
-            Joueur.attaquer(Adversaire)
-
-            if Adversaire._vie <= 0 :
+            joueur.attaquer(ennemi)
+            if ennemi.vie <= 0:
+                print(f"\nFélicitations pour {joueur.nom}, il a gagné!")
                 break
+
             print("Tour de l'adversaire")
+            ennemi.attaquer(joueur)
+            if joueur.vie <= 0:
+                print(f"\nDommage ! {ennemi.nom} a vaincu {joueur.nom}.")
+                break
 
-        self.verifierGagnant(Joueur, Adversaire)
+# Exécution du jeu
+jeu = Jeu()
+jeu.lancer_jeu()
 
-    def verifierGagnant(self, Joueur, Adversaire):
-        if Joueur._vie <= 0:
-            print("Félicitations pour ", Adversaire._nom, ", il a gagné!")
-        else:
-            print("Félicitations pour ", Joueur._nom, ", il a gagné!")
-
-# Utilisation des classes
-le_jeu = Jeu()
-le_jeu.choisirNiveau()
-le_jeu.lancerJeu()
 
 
 
